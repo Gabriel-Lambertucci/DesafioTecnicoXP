@@ -5,9 +5,9 @@ interface IComprar {
 }
 
 interface IVender {
-  "idAtivo": number;
-  "QtdeVendida": number;
-  "ContaVendedora": number;
+  "CodCliente": number;
+  "CodAtivo": number;
+  "QtdeAtivo": number;
 }
 
 interface IGetByClient {

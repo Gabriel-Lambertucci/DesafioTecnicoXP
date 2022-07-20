@@ -1,17 +1,17 @@
-import { IComprarOuVender,
+import { IComprar, IVender,
   IGetByAssets, IGetByClient, IGetSaldo, IPostDepositoOuSaque } from "../interfaces";
 
-/* const postInvestimentosComprar: IComprarOuVender = {
+const postInvestimentosComprar: IComprar = {
   "CodAtivo": 85,
   "CodCliente": 1,
   "QtdeAtivo": 20,
 }
 
-const postInvestimentosVender: IComprarOuVender = {
-  "CodAtivo": 70,
+const postInvestimentosVender: IVender = {
+  "CodAtivo": 85,
   "CodCliente": 1,
-  "QtdeAtivo": 5,
-} */
+  "QtdeAtivo": 20,
+}
 
 const getByClient1: IGetByClient = {
   "CodCliente": 5,
@@ -49,6 +49,6 @@ const getSaldo: IGetSaldo = {
 }
 
 
-export default { postInvestimentosComprar,
+export { postInvestimentosComprar,
   postInvestimentosVender,
   getByClient1, getByClient2, getByAsset, postDeposito, postSaque, getSaldo };
