@@ -1,3 +1,4 @@
 const totalCorretora = 100;
+const totalCarteira = 20;
 
-export default totalCorretora;
+export { totalCorretora , totalCarteira };

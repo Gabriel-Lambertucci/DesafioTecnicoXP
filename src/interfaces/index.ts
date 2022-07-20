@@ -1,7 +1,13 @@
-interface IComprarOuVender {
+interface IComprar {
   "CodCliente": number;
   "CodAtivo": number;
   "QtdeAtivo": number;
+}
+
+interface IVender {
+  "idAtivo": number;
+  "QtdeVendida": number;
+  "ContaVendedora": number;
 }
 
 interface IGetByClient {
@@ -27,4 +33,4 @@ interface IGetSaldo {
   "Saldo": number;
 }
 
-export { IComprarOuVender , IGetByClient, IGetByAssets, IPostDepositoOuSaque, IGetSaldo };
+export { IComprar, IVender, IGetByClient, IGetByAssets, IPostDepositoOuSaque, IGetSaldo };

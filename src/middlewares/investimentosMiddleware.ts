@@ -1,9 +1,8 @@
 import { NextFunction, Request, Response } from "express";
-import totalCorretora from "../helpers/utils";
 import Joi from "joi";
-import { IComprarOuVender } from "../interfaces";
+import { IComprar, IVender } from "../interfaces";
 
-const validatePostObject = (input: IComprarOuVender) => { // Validação de objeto completo para requisição post de compra ou venda
+const validaObjetoCompra = (input: IComprar) => { // Validação de objeto completo para requisição post de compra
   const schema = Joi.object({
     CodCliente: Joi.number().integer().required(),
     CodAtivo: Joi.number().integer().required(),
@@ -15,8 +14,7 @@ const validatePostObject = (input: IComprarOuVender) => { // Validação de obje
 };
 
 const postComprarMiddleware = async (req: Request, res: Response, next: NextFunction) => {
-  const isValid = await validatePostObject(req.body);
-  console.log(isValid.error?.message);
+  const isValid = await validaObjetoCompra(req.body);
   const message = isValid.error?.message;
   if (message) {
     return res.status(400).json({ message });
@@ -24,4 +22,25 @@ const postComprarMiddleware = async (req: Request, res: Response, next: NextFunc
   next();
 }
 
-export default { postComprarMiddleware }
+const validaObjetoVenda = (input: IVender) => { // Validação de objeto completo para requisição post de venda
+  const schema = Joi.object({
+    idAtivo: Joi.number().integer().required(),
+    QtdeVendida: Joi.number().required(),
+    ContaVendedora: Joi.number().required(),
+  }).messages({
+    'any.required': '{{#label}} is required',
+  });
+  return schema.validate(input, { abortEarly: false });
+};
+
+const postVenderMiddleware = async (req: Request, res: Response, next: NextFunction) => {
+  const isValid = await validaObjetoVenda(req.body);
+  const message = isValid.error?.message;
+  if (message) {
+    return res.status(400).json({ message });
+  }
+  next();
+}
+
+
+export default { postComprarMiddleware, postVenderMiddleware }
