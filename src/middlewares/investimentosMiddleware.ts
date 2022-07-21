@@ -1,5 +1,5 @@
-import { NextFunction, Request, Response } from "express";
-import { validaObjeto } from "../helpers/utils";
+import { NextFunction, Request, Response } from 'express';
+import { validaObjeto } from '../helpers/utils';
 
 const postComprarMiddleware = async (req: Request, res: Response, next: NextFunction) => {
   const isValid = await validaObjeto(req.body);
@@ -7,8 +7,8 @@ const postComprarMiddleware = async (req: Request, res: Response, next: NextFunc
   if (message) {
     return res.status(400).json({ message });
   }
-  next();
-}
+  return next();
+};
 
 const postVenderMiddleware = async (req: Request, res: Response, next: NextFunction) => {
   const isValid = await validaObjeto(req.body);
@@ -16,8 +16,7 @@ const postVenderMiddleware = async (req: Request, res: Response, next: NextFunct
   if (message) {
     return res.status(400).json({ message });
   }
-  next();
-}
+  return next();
+};
 
-
-export default { postComprarMiddleware, postVenderMiddleware }
+export default { postComprarMiddleware, postVenderMiddleware };

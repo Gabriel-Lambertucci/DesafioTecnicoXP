@@ -15,8 +15,7 @@
         "@typescript-eslint"
     ],
     "rules": {
-    },
-    "editor.codeActionsOnSave": {
-        "source.fixAll.eslint": true
+        "import/no-unresolved": "off",
+        "import/extensions": "off"
     }
 }

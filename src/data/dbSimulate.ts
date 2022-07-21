@@ -33,7 +33,7 @@ const getByAsset: IGetByAssets = {
   "Valor": 10.00,
 }
 
-/* const postDeposito: IPostDepositoOuSaque = {
+const postDeposito: IPostDepositoOuSaque = {
   "CodCliente": 3,
   "Valor": 1000.00,
 }
@@ -41,7 +41,7 @@ const getByAsset: IGetByAssets = {
 const postSaque: IPostDepositoOuSaque = {
   "CodCliente": 3,
   "Valor": 1000.00,
-} */
+}
 
 const getSaldo: IGetSaldo = {
   "CodCliente": 2,
