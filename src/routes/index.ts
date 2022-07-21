@@ -1,6 +1,7 @@
 import { Router } from 'express';
 import ativosController from '../controllers/ativosController';
 import clientesController from '../controllers/clientesController';
+import contaController from '../controllers/contaController';
 import investimentosController from '../controllers/investimentosController';
 import loginController from '../controllers/loginController';
 import clientesMiddleware from '../middlewares/clientesMiddleware';
@@ -13,6 +14,8 @@ routes.post('/investimentos/vender', investimentosMiddleware.postVenderMiddlewar
 routes.post('/user', clientesMiddleware.criarClienteMiddleware, clientesController.criarCliente);
 routes.post('/login', clientesMiddleware.criarClienteMiddleware, loginController.login);
 routes.get('/ativos', ativosController.getAtivos);
-routes.get('/ativos/:CodCliente', ativosController.getByClient);
+routes.get('/ativos/:CodAtivo', ativosController.getByAtivo);
+routes.get('/ativos/cliente/:CodCliente', ativosController.getByClient);
+routes.post('/conta/saque', contaController.postSaque);
 
 export default routes;

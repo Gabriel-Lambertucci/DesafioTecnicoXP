@@ -6,6 +6,14 @@ const getAtivos = async (): Promise<RowDataPacket[]> => {
   return result as RowDataPacket[];
 };
 
+const getByAtivo = async (CodAtivo: number): Promise<RowDataPacket[]> => {
+  const [result] = await connection.execute(
+    'SELECT CodAtivo, QtdeCorretora AS QtdeAtivo, ValorUnitario as Valor FROM DesafioTecnico.Ativos WHERE CodAtivo = ?',
+    [CodAtivo],
+  );
+  return result as RowDataPacket[];
+};
+
 const updateAtivo = async (CodAtivo: number, QtdeAtual: number) => {
   await connection.execute('UPDATE DesafioTecnico.Ativos SET QtdeCorretora = ? WHERE CodAtivo = ?', [QtdeAtual, CodAtivo]);
 };
@@ -31,4 +39,6 @@ const getByClient = async (CodCliente: number) => {
   return returnArray as RowDataPacket[];
 };
 
-export default { getAtivos, updateAtivo, getByClient };
+export default {
+  getAtivos, updateAtivo, getByClient, getByAtivo,
+};

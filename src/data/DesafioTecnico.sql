@@ -10,32 +10,39 @@ CREATE TABLE DesafioTecnico.Clientes(
 CREATE TABLE DesafioTecnico.Ativos(
   CodAtivo INTEGER AUTO_INCREMENT PRIMARY KEY NOT NULL,
   Ativo TEXT NOT NULL,
-  ValorUnitario INTEGER NOT NULL,
-  QtdeCorretora INTEGER NOT NULL
+  ValorUnitario FLOAT NOT NULL,
+  QtdeCorretora FLOAT NOT NULL
 );
 
 CREATE TABLE DesafioTecnico.Investimentos(
   id INTEGER AUTO_INCREMENT PRIMARY KEY NOT NULL,
   CodCliente INTEGER NOT NULL,
   CodAtivo INTEGER NOT NULL,
-  QtdeAtivo INTEGER NOT NULL,
+  QtdeAtivo FLOAT NOT NULL,
   FOREIGN KEY (CodCliente) REFERENCES DesafioTecnico.Clientes (CodCliente),
   FOREIGN KEY (CodAtivo) REFERENCES DesafioTecnico.Ativos (CodAtivo)
+);
+
+CREATE TABLE DesafioTecnico.Conta(
+  id INTEGER AUTO_INCREMENT PRIMARY KEY NOT NULL,
+  CodCliente INTEGER NOT NULL,
+  Saldo FLOAT NOT NULL,
+  FOREIGN KEY (CodCliente) REFERENCES DesafioTecnico.Clientes (CodCliente)
 );
 
 INSERT INTO
   DesafioTecnico.Ativos(Ativo, ValorUnitario, QtdeCorretora)
 VALUES
-  ('Amazon',10.00, 100),
-  ('Americanas',15.00, 100),
-  ('Banco do Brasil',20.00, 500),
-  ('Banco Pan',50.00, 600),
-  ('Bradesco', 40.00, 100),
-  ('Carrefour', 80.00, 50),
-  ('Gol', 30.00, 40),
-  ('Petrobras', 20.00, 100),
-  ('Santander', 30.00, 10),
-  ('XP', 400.00, 20);
+  ('Amazon',10.50, 100),
+  ('Americanas',15.75, 100),
+  ('Banco do Brasil',20.23, 500),
+  ('Banco Pan',50.06, 600),
+  ('Bradesco', 40.09, 100),
+  ('Carrefour', 80.50, 50),
+  ('Gol', 30.19, 40),
+  ('Petrobras', 20.05, 100),
+  ('Santander', 31.73, 10),
+  ('XP', 409.15, 20);
 
 #INSERT INTO
 #  DesafioTecnico.Clientes (username)
