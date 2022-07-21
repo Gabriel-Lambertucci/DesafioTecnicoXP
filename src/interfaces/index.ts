@@ -34,8 +34,8 @@ interface IGetSaldo {
 }
 
 interface ICliente {
-  'CodCliente': number;
   'Nome': string;
+  'Senha': string;
 }
 
 export {

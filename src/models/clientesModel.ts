@@ -1,13 +1,21 @@
-import { ResultSetHeader } from 'mysql2';
+import { ResultSetHeader, RowDataPacket } from 'mysql2';
+import bcrypt from 'bcrypt-nodejs';
 import { ICliente } from '../interfaces';
 import connection from './connection';
 
+const getClientes = async (): Promise<RowDataPacket[]> => {
+  const [result] = await connection.execute('SELECT * FROM DesafioTecnico.Clientes');
+  return result as RowDataPacket[];
+};
+
 const criarCliente = async (body: ICliente) => {
+  const salt = bcrypt.genSaltSync(5);
+  const hash = bcrypt.hashSync(body.Senha, salt);
   const [result] = await connection.execute<ResultSetHeader>(
-    'INSERT INTO DesafioTecnico.Clientes (UserName) VALUE (?)',
-    [body.Nome],
+    'INSERT INTO DesafioTecnico.Clientes (UserName, Senha) VALUES (?, ?)',
+    [body.Nome, hash],
   );
   return result;
 };
 
-export default { criarCliente };
+export default { criarCliente, getClientes };
