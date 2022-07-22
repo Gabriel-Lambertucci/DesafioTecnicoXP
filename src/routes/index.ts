@@ -17,5 +17,7 @@ routes.get('/ativos', ativosController.getAtivos);
 routes.get('/ativos/:CodAtivo', ativosController.getByAtivo);
 routes.get('/ativos/cliente/:CodCliente', ativosController.getByClient);
 routes.post('/conta/saque', contaController.postSaque);
+routes.post('/conta/deposito', contaController.postDeposito);
+routes.get('/conta/:CodCliente', contaController.getContaByClient);
 
 export default routes;
