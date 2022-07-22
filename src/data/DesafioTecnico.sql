@@ -1,37 +1,37 @@
 DROP SCHEMA IF EXISTS DesafioTecnico;
 CREATE SCHEMA IF NOT EXISTS DesafioTecnico;
 
-CREATE TABLE DesafioTecnico.Clientes(
+CREATE TABLE Clientes(
   CodCliente INTEGER AUTO_INCREMENT PRIMARY KEY NOT NULL,
   UserName TEXT NOT NULL,
   Senha TEXT NOT NULL
 );
 
-CREATE TABLE DesafioTecnico.Ativos(
+CREATE TABLE Ativos(
   CodAtivo INTEGER AUTO_INCREMENT PRIMARY KEY NOT NULL,
   Ativo TEXT NOT NULL,
   ValorUnitario FLOAT NOT NULL,
   QtdeCorretora FLOAT NOT NULL
 );
 
-CREATE TABLE DesafioTecnico.Investimentos(
+CREATE TABLE Investimentos(
   id INTEGER AUTO_INCREMENT PRIMARY KEY NOT NULL,
   CodCliente INTEGER NOT NULL,
   CodAtivo INTEGER NOT NULL,
   QtdeAtivo FLOAT NOT NULL,
-  FOREIGN KEY (CodCliente) REFERENCES DesafioTecnico.Clientes (CodCliente),
-  FOREIGN KEY (CodAtivo) REFERENCES DesafioTecnico.Ativos (CodAtivo)
+  FOREIGN KEY (CodCliente) REFERENCES Clientes (CodCliente),
+  FOREIGN KEY (CodAtivo) REFERENCES Ativos (CodAtivo)
 );
 
-CREATE TABLE DesafioTecnico.Conta(
+CREATE TABLE Conta(
   id INTEGER AUTO_INCREMENT PRIMARY KEY NOT NULL,
   CodCliente INTEGER NOT NULL,
   Saldo FLOAT NOT NULL,
-  FOREIGN KEY (CodCliente) REFERENCES DesafioTecnico.Clientes (CodCliente)
+  FOREIGN KEY (CodCliente) REFERENCES Clientes (CodCliente)
 );
 
 INSERT INTO
-  DesafioTecnico.Ativos(Ativo, ValorUnitario, QtdeCorretora)
+  Ativos(Ativo, ValorUnitario, QtdeCorretora)
 VALUES
   ('Amazon',10.50, 100),
   ('Americanas',15.75, 100),
