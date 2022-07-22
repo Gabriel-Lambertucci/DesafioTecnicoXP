@@ -7,3 +7,4 @@ heroku.yml
 README.md
 jest.*
 .eslint*
+docker-compose.yml
