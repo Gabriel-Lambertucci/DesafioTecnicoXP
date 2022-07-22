@@ -20,5 +20,6 @@ async function recreateDatabase() {
 recreateDatabase()
   .then(async () => {
     console.log('Banco Restaurado com sucesso'); /* eslint-disable-line*/
+    connection.end();
     process.exit(0);
   });
