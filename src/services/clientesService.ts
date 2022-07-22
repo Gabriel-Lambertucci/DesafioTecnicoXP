@@ -12,4 +12,9 @@ const criarCliente = async (body: ICliente) => {
   return insertId;
 };
 
-export default { criarCliente };
+const getClientes = async () => {
+  const clientes = await clientesModel.getClientes();
+  return clientes;
+};
+
+export default { criarCliente, getClientes };

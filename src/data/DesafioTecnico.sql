@@ -1,20 +1,20 @@
-DROP SCHEMA IF EXISTS DesafioTecnico;
-CREATE SCHEMA IF NOT EXISTS DesafioTecnico;
+DROP SCHEMA IF EXISTS hE8vWmxhKd;
+CREATE SCHEMA IF NOT EXISTS hE8vWmxhKd;
 
-CREATE TABLE Clientes(
+CREATE TABLE hE8vWmxhKd.Clientes(
   CodCliente INTEGER AUTO_INCREMENT PRIMARY KEY NOT NULL,
   UserName TEXT NOT NULL,
   Senha TEXT NOT NULL
 );
 
-CREATE TABLE Ativos(
+CREATE TABLE hE8vWmxhKd.Ativos(
   CodAtivo INTEGER AUTO_INCREMENT PRIMARY KEY NOT NULL,
   Ativo TEXT NOT NULL,
   ValorUnitario FLOAT NOT NULL,
   QtdeCorretora FLOAT NOT NULL
 );
 
-CREATE TABLE Investimentos(
+CREATE TABLE hE8vWmxhKd.Investimentos(
   id INTEGER AUTO_INCREMENT PRIMARY KEY NOT NULL,
   CodCliente INTEGER NOT NULL,
   CodAtivo INTEGER NOT NULL,
@@ -23,7 +23,7 @@ CREATE TABLE Investimentos(
   FOREIGN KEY (CodAtivo) REFERENCES Ativos (CodAtivo)
 );
 
-CREATE TABLE Conta(
+CREATE TABLE hE8vWmxhKd.Conta(
   id INTEGER AUTO_INCREMENT PRIMARY KEY NOT NULL,
   CodCliente INTEGER NOT NULL,
   Saldo FLOAT NOT NULL,
@@ -31,17 +31,17 @@ CREATE TABLE Conta(
 );
 
 INSERT INTO
-  Ativos(Ativo, ValorUnitario, QtdeCorretora)
+  hE8vWmxhKd.Ativos(Ativo, ValorUnitario, QtdeCorretora)
 VALUES
   ('Amazon',10.50, 100),
   ('Americanas',15.75, 100),
-  ('Banco do Brasil',20.23, 500),
-  ('Banco Pan',50.06, 600),
-  ('Bradesco', 40.09, 100),
+  ('Banco do Brasil',20.20, 500),
+  ('Banco Pan',50.0, 600),
+  ('Bradesco', 40.10, 100),
   ('Carrefour', 80.50, 50),
-  ('Gol', 30.19, 40),
-  ('Petrobras', 20.05, 100),
-  ('Santander', 31.73, 10),
+  ('Gol', 30.20, 40),
+  ('Petrobras', 20.30, 100),
+  ('Santander', 31.40, 10),
   ('XP', 409.15, 20);
 
 #INSERT INTO

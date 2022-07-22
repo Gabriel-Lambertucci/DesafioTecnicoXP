@@ -7,4 +7,10 @@ const criarCliente = async (req: Request, res: Response) => {
   return res.status(200).json({ CodCliente: id, Nome: req.body.Nome });
 };
 
-export default { criarCliente };
+const getClientes = async (__req: Request, res: Response) => {
+  const clientes = await clientesService.getClientes();
+  if (clientes.length === 0) return res.status(404).json({ message: 'Não há clientes cadastrados' });
+  return res.status(200).json(clientes);
+};
+
+export default { criarCliente, getClientes };

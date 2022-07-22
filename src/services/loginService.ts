@@ -14,7 +14,7 @@ const login = async (body: ICliente) => {
   const { Nome, Senha } = body;
 
   const [user] = await connection.execute<RowDataPacket[]>(
-    'SELECT * FROM DesafioTecnico.Clientes WHERE UserName = ?',
+    'SELECT * FROM Clientes WHERE UserName = ?',
     [Nome],
   );
 
