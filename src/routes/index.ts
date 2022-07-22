@@ -9,8 +9,6 @@ import investimentosMiddleware from '../middlewares/investimentosMiddleware';
 
 const routes = Router();
 
-routes.get('/', () => 'Bem vindo a Api do DesafioXP');
-
 routes.post('/investimentos/comprar', investimentosMiddleware.postComprarMiddleware, investimentosController.postComprar);
 routes.post('/investimentos/vender', investimentosMiddleware.postVenderMiddleware, investimentosController.postVender);
 routes.post('/user', clientesMiddleware.criarClienteMiddleware, clientesController.criarCliente);
