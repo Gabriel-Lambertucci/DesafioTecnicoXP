@@ -4,7 +4,8 @@
     "title": "api-desafioxp",
     "description": "Api criada por Gabriel Lambertucci para o desafioXP",
     "contact": {
-      "email": "gabrielambertucci10@gmail.com"
+      "email": "gabrielambertucci10@gmail.com",
+      "linkedin": "https://www.linkedin.com/in/gabriel-lambertucci/"
     },
     "version": "1.0.0"
   },
@@ -134,8 +135,7 @@
         "tags": [
           "login"
         ],
-        "summary": "Fazer Login",
-        "description": "Fazer Login no sistema",
+        "description": "Para fazer login no sistema, é preciso que primeiro o cliente esteja cadastrado. Será enviado um token jwt após o cadastro que é necessário para login e para realizar transações. Informo que a senha é criptografada antes de entrar no banco de dados com bcrypt, protegendo sua informações.",
         "requestBody": {
           "required": true,
           "content": {
@@ -205,8 +205,7 @@
         "tags": [
           "ativos"
         ],
-        "summary": "Listar ativos",
-        "description": "Lista de ativos",
+        "description": "Lista de ativos disponíveis para compra.",
         "responses": {
           "200": {
             "description": "OK",
@@ -262,8 +261,7 @@
         "tags": [
           "ativos"
         ],
-        "summary": "Listar ativo por código",
-        "description": "Lista de ativo por Código",
+        "description": "Retorna um ativo específico, através de seu código.",
         "requestBody": {
           "required": true
         },
@@ -318,7 +316,6 @@
         "tags": [
           "ativos"
         ],
-        "summary": "Listar ativo por cliente",
         "description": "Lista de ativos que um cliente possui",
         "requestBody": {
           "required": true
