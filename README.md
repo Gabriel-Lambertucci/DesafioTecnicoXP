@@ -57,6 +57,7 @@
 <details>
    <summary><strong> EndPoints </strong></summary><br />
 
-  > A Api está documentada através do SwaggerUI. Peço então que acessem o documento, através do endpoint http://localhost:3000/docs (Local) ou http://localhost:3001/docs (Docker), para que vejam todas as possibilidades que a Api oferece!
+  > A Api está documentada através do SwaggerUI. 
+  > Peço então que acessem o documento, através do endpoint https://api-desafioxp.herokuapp.com/docs, ou se estiver rodando localmente a aplicação através de http://localhost:3000/docs (Local) ou http://localhost:3001/docs (Docker), para que vejam todas as possibilidades que a Api oferece!
    <br/>
 </details>
