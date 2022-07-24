@@ -11,7 +11,7 @@
 </details>
 
 <details>
-  <summary><strong>👨‍💻 Deploy na Heroku! o</strong></summary><br />
+  <summary><strong>👨‍💻 Deploy na Heroku!</strong></summary><br />
   
   > O deploy da aplicação foi feito na plataforma Heroku, onde tive experiência e subir aplicações na Trybe.
   > Dessa forma a Api está pronta para receber requisições através do link https://api-desafioxp.herokuapp.com/ seguido de todos endpoints que o projeto possui.
