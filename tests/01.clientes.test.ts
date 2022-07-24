@@ -16,7 +16,7 @@ describe('Testando rotas cliente', () => {
             Nome: 'Gabriel Lambertucci',
             Senha: '123456',
           },
-        ).expect('status', 200)
+        ).expect('status', 201)
         .then((response) => {
           const { body } = response;
           const result = JSON.parse(body);
@@ -55,7 +55,7 @@ describe('Testando rotas cliente', () => {
             const result = JSON.parse(body);
             expect(result).toStrictEqual([{
               CodCliente: 1,
-              UserName: "Gabriel Lambertucci"
+              Nome: "Gabriel Lambertucci"
             }]);
           });
       });

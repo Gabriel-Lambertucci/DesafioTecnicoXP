@@ -109,6 +109,16 @@ describe('Testando rotas ativos', () => {
       })
 
       await frisby
+      .post(
+        'http://localhost:3000/conta/deposito',
+        {
+          "CodCliente": 1,
+          "Senha":  "123456",
+          "Valor": 50000
+        },
+      )
+
+      await frisby
       .setup({
         request: {
           headers: {

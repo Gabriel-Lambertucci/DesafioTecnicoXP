@@ -55,7 +55,7 @@ const postVender = async (body: IVender): Promise<boolean | number | string> => 
 
   const investimento = investimentos.find((item) => item.CodAtivo === CodAtivo && item.CodCliente === CodCliente && item); /* eslint-disable-line*/
 
-  if (!investimento) return false;
+  if (!investimento) return 'Ação não encontrada. Reveja os códigos passados.';
 
   const QtdeCarteira = investimento.QtdeAtivo;
 

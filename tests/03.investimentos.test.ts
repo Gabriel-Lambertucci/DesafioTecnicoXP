@@ -29,7 +29,7 @@ describe('Testando rotas investimentos', () => {
       })
     })
 
-    it('Cliente já está cadastrado e logado na plataforma e faz uma compra', async () => {
+    it('Cliente já está cadastrado e logado na plataforma e faz uma compra sem ter saldo', async () => {
 
       await frisby
       .post(
@@ -68,22 +68,44 @@ describe('Testando rotas investimentos', () => {
           CodAtivo:1,
           QtdeAtivo: 10
       },
-      ).expect('status', 200)
+      ).expect('status', 409)
       .then((response) => {
         const { body } = response;
         const result = JSON.parse(body);
         expect(result).toStrictEqual({
-          message: "Compra realizada com sucesso!",
-          Compra: {
-              CodCliente: 1,
-              CodAtivo: 1,
-              QtdeAtivo: 10
-          }
+          message: "Saldo insuficiente para compra",
         });
       });
     });
 
     it('Cliente já está cadastrado e logado na plataforma e faz uma venda', async () => {
+      await frisby
+      .post(
+        'http://localhost:3000/conta/deposito',
+        {
+          "CodCliente": 1,
+          "Senha":  "123456",
+          "Valor": 50000
+        },
+      )
+      await frisby
+      .setup({
+        request: {
+          headers: {
+            Authorization: token,
+            'Content-Type': 'application/json',
+          },
+        },
+      })
+      .post(
+        'http://localhost:3000/investimentos/comprar',
+        {
+          CodCliente: 1,
+          CodAtivo:1,
+          QtdeAtivo: 10
+      },
+      )
+
       await frisby
       .setup({
         request: {
@@ -115,7 +137,7 @@ describe('Testando rotas investimentos', () => {
       });
     });
 
-    it('Cliente tentar comprar quantidade de uma ação acima do que a corretora possui', async () => {
+    it('Cliente tenta comprar quantidade de uma ação acima do que a corretora possui', async () => {
       await frisby
       .setup({
         request: {
@@ -130,7 +152,7 @@ describe('Testando rotas investimentos', () => {
         {
           CodCliente: 1,
           CodAtivo:1,
-          QtdeAtivo: 500
+          QtdeAtivo: 101
       },
       ).expect('status', 409)
       .then((response) => {
@@ -157,14 +179,14 @@ describe('Testando rotas investimentos', () => {
         {
           CodCliente: 1,
           CodAtivo:1,
-          QtdeAtivo: 10
+          QtdeAtivo: 200
       },
       ).expect('status', 409)
       .then((response) => {
         const { body } = response;
         const result = JSON.parse(body);
         expect(result).toStrictEqual({
-          message: "CodAtivo incorreto ou Quantidade do Ativo indisponível na corretora",
+          message: "Quantidade a ser vendida indisponível na carteira",
         });
       });
     });
