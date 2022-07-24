@@ -1,7 +1,6 @@
 # Boas vindas ao repositório da minha Api feita para o DesafioTecnicoXP!
 
 <details>
-  <h2> Como executar o projeto? </h2>
   <summary><strong>🐋 Rodando no Docker vs Localmente</strong></summary><br />
   
   ## Com Docker
@@ -30,15 +29,16 @@
 </details>
 
 <details>
-  <h2> Testando a aplicação! </h2
+   <summary><strong> Rodando Testes! </strong></summary><br />
 
   > Para inicar os testes da aplicação é muito simples. Rode o comando npm test em seu terminal e a mágica acontece.
   - São 4 testes que testam de forma bem completa a aplicação, mas claro que quanto mais melhor e isso está no meu planejamento para o futuro!
    <br/>
 </details>
 
-  <h2> EndPoints </h2
+<details>
+   <summary><strong> EndPoints! </strong></summary><br />
 
-  > A Api está documentada através do SwaggerUI. Peço então que acessem o documento, através do endpoint httphttp://localhost:3000/docs (Local) ou http://localhost:3001/docs (Docker), para que vejam todas as possibilidades que a Api oferece!
+  > A Api está documentada através do SwaggerUI. Peço então que acessem o documento, através do endpoint http://localhost:3000/docs (Local) ou http://localhost:3001/docs (Docker), para que vejam todas as possibilidades que a Api oferece!
    <br/>
 </details>
