@@ -1,0 +1,874 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "api-desafioxp",
+    "description": "Api criada por Gabriel Lambertucci para o desafioXP",
+    "contact": {
+      "email": "gabrielambertucci10@gmail.com"
+    },
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/cliente": {
+      "post": {
+        "tags": [
+          "clientes"
+      ],
+        "summary": "Cadastrar cliente",
+        "description": "Cadastre um novo cliente",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application.json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "Nome": {
+                    "type": "string"
+                  },
+                  "Senha": {
+                    "type": "string"
+                  }
+                },
+                "example": {
+                    "Nome": "Gabriel Lambertucci",
+                    "Senha": "123456"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Not Found",
+            "content": {
+              "application.json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "CodCliente": {
+                      "type": "number"
+                    },
+                    "Nome": {
+                      "type": "string"
+                    }
+                  },
+                  "example": {
+                    "CodCliente": 1,
+                    "Nome": "Gabriel Lambertucci"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Created",
+            "content": {
+              "application.json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": "string"
+                  },
+                  "example": {
+                    "message": "Usuário já Cadastrado"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+      },
+    "/clientes": {
+      "get": {
+        "tags": [
+          "clientes"
+        ],
+        "summary": "Listar clientes",
+        "description": "Lista de clientes Cadastrados",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application.json": {
+                "schema": {
+                  "type": "array",
+                  "properties": {
+                    "CodCliente": {
+                      "type": "number"
+                    },
+                    "Nome": {
+                      "type": "string"
+                    }
+                  },
+                  "example": [{
+                    "CodCliente": 1,
+                    "Nome": "Gabriel Lambertucci"
+                  }]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application.json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": "string"
+                  },
+                  "example": {
+                    "message": "Não há clientes cadastrados"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/login": {
+      "post": {
+        "tags": [
+          "login"
+        ],
+        "summary": "Fazer Login",
+        "description": "Fazer Login no sistema",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application.json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "Nome": {
+                    "type": "string"
+                  },
+                  "Senha": {
+                    "type": "string"
+                  }
+                },
+                "example": {
+                    "Nome": "Gabriel Lambertucci",
+                    "Senha": "123456"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application.json": {
+                "schema": {
+                  "type": "array",
+                  "properties": {
+                    "token": {
+                      "type": "number"
+                    },
+                    "Usuario": {
+                      "type": "string"
+                    }
+                  },
+                  "example": {
+                    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbiI6dHJ1ZSwiaWF0IjoxNjU4Njg3NzYxfQ.PaRY9aHGNaF3yKk6tM3b_Avahn4VDVq20CbSO78CYzA",
+                    "Usuario": "Gabriel Lambertucci"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Not Found",
+            "content": {
+              "application.json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": "string"
+                  },
+                  "example": {
+                    "message": "Usuário e/ou senha incorretos"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/ativos": {
+      "get": {
+        "tags": [
+          "ativos"
+        ],
+        "summary": "Listar ativos",
+        "description": "Lista de ativos",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application.json": {
+                "schema": {
+                  "type": "array",
+                  "properties": {
+                    "CodAtivo": {
+                      "type": "number"
+                    },
+                    "Ativo": {
+                      "type": "string"
+                    },
+                    "ValorUnitario": {
+                      "type": "number"
+                    },
+                    "QtdeCorretora": {
+                      "type": "number"
+                    }
+                  },
+                  "example": [{
+                    "CodAtivo": 1,
+                    "Ativo": "Amazon",
+                    "ValorUnitario": 10.5,
+                    "QtdeCorretora": 80
+                }]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application.json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": "string"
+                  },
+                  "example": {
+                    "message": "Erro inesperado, tente novamente"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/ativos/:CodAtivo": {
+      "get": {
+        "tags": [
+          "ativos"
+        ],
+        "summary": "Listar ativo por código",
+        "description": "Lista de ativo por Código",
+        "requestBody": {
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application.json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "CodAtivo": {
+                      "type": "number"
+                    },
+                    "QtdeAtivo": {
+                      "type": "number"
+                    },
+                    "Valor": {
+                      "type": "number"
+                    }
+                  },
+                  "example": {
+                    "CodAtivo": 1,
+                    "QtdeAtivo": 80,
+                    "Valor": 10.5
+                }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application.json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": "string"
+                  },
+                  "example": {
+                    "message": "Ativo não encontrado!"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/ativos/clientes/:CodCliente": {
+      "get": {
+        "tags": [
+          "ativos"
+        ],
+        "summary": "Listar ativo por cliente",
+        "description": "Lista de ativos que um cliente possui",
+        "requestBody": {
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application.json": {
+                "schema": {
+                  "type": "array",
+                  "properties": {
+                    "CodCliente": {
+                      "type": "number"
+                    },
+                    "CodAtivo": {
+                      "type": "number"
+                    },
+                    "QtdeAtivo": {
+                      "type": "number"
+                    },
+                    "Valor": {
+                      "type": "number"
+                    }
+                  },
+                  "example": [
+                    {
+                        "CodCliente": 1,
+                        "CodAtivo": 1,
+                        "QtdeAtivo": 5,
+                        "Valor": 10.5
+                    },
+                    {
+                        "CodCliente": 1,
+                        "CodAtivo": 1,
+                        "QtdeAtivo": 10,
+                        "Valor": 10.5
+                    }
+                ]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application.json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": "string"
+                  },
+                  "example": {
+                    "message": "Usuário não possui ativos no momento"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/conta/saque": {
+      "post": {
+        "tags": [
+          "conta"
+        ],
+        "summary": "Saque",
+        "description": "Realizar um novo saque",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application.json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "CodCliente": {
+                    "type": "number"
+                  },
+                  "Senha": {
+                    "type": "string"
+                  },
+                  "Valor": {
+                    "type": "number"
+                  }
+                },
+                "example": {
+                  "CodCliente": 1,
+                  "Senha":  "123456",
+                  "Valor": 100000
+              }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application.json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    },
+                    "Saque": {
+                      "type": "object",
+                      "content": {
+                        "CodCliente": "number",
+                        "Senha": "string",
+                        "Valor": "number"
+                      }
+                    }
+                  },
+                  "example": {
+                    "message": "Saque realizado com sucesso",
+                    "Saque": {
+                        "CodCliente": 1,
+                        "Senha": "123456",
+                        "Valor": 100
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request por Senha, usuario ou saldo",
+            "content": {
+              "application.json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": "string"
+                  },
+                  "example": {
+                    "message": "Código do cliente não encontrado, senha incorreta e ou saldo insuficiente"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/conta/deposito": {
+      "post": {
+        "tags": [
+          "conta"
+        ],
+        "summary": "Deposito",
+        "description": "Realizar um novo Deposito",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application.json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "CodCliente": {
+                    "type": "number"
+                  },
+                  "Senha": {
+                    "type": "string"
+                  },
+                  "Valor": {
+                    "type": "number"
+                  }
+                },
+                "example": {
+                  "CodCliente": 1,
+                  "Senha":  "123456",
+                  "Valor": 100000
+              }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application.json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    },
+                    "Saque": {
+                      "type": "object",
+                      "content": {
+                        "CodCliente": "number",
+                        "Senha": "string",
+                        "Valor": "number"
+                      }
+                    }
+                  },
+                  "example": {
+                    "message": "Saque realizado com sucesso",
+                    "Saque": {
+                        "CodCliente": 1,
+                        "Senha": "123456",
+                        "Valor": 100
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request por Senha, Usuario ou Valor",
+            "content": {
+              "application.json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": "string"
+                  },
+                  "example": {
+                    "message": "Código do cliente não encontrado, senha incorreta e ou valor menor ou igual a zero"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/conta/:CodCliente": {
+      "post": {
+        "tags": [
+          "conta"
+        ],
+        "summary": "Informação da conta de um cliente",
+        "description": "",
+        "requestParams": {
+          "required": "true",
+          "content": "CodCliente"
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application.json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "Senha": {
+                    "type": "string"
+                  }
+                },
+                "example": {
+                  "Senha":  "123456"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application.json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    },
+                    "Saque": {
+                      "type": "object",
+                      "content": {
+                        "CodCliente": "number",
+                        "Saldo": "number"
+                      }
+                    }
+                  },
+                  "example": {
+                    "CodCliente": 1,
+                    "Saldo": 0
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request por Senha ou CodCliente",
+            "content": {
+              "application.json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": "string"
+                  },
+                  "example": {
+                    "message": "Código do cliente não encontrado e ou senha incorreta"
+                }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/investimentos/vender": {
+      "post": {
+        "tags": [
+          "investimentos"
+        ],
+        "summary": "Requisição de venda de uma ação pelo cliente",
+        "description": "Requisição de venda de uma ação pelo cliente",
+        "requestParams": {
+          "required": "true",
+          "content": "CodCliente"
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application.json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "CodCliente": {
+                    "type": "number"
+                  },
+                  "CodAtivo": {
+                    "type": "number"
+                  },
+                  "QtdeAtivo": {
+                    "type": "number"
+                  }
+                },
+                "example": {
+                  "Senha":  "123456"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application.json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    },
+                    "Venda": {
+                      "type": "object",
+                      "content": {
+                        "CodCliente": "number",
+                        "CodAtivo": "number",
+                        "QtdeAtivo": "number"
+                      }
+                    }
+                  },
+                  "example": {
+                    "message": "Venda realizada com sucesso!",
+                    "Venda": {
+                        "CodCliente": 1,
+                        "CodAtivo": 1,
+                        "QtdeAtivo": 50
+                    }
+                }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request por Senha ou CodCliente",
+            "content": {
+              "application.json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": "string"
+                  },
+                  "example": {
+                    "message": "Código do cliente não encontrado e ou senha incorreta"
+                }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/investimentos/comprar": {
+      "post": {
+        "tags": [
+          "investimentos"
+        ],
+        "summary": "Requisição de compra de uma ação pelo cliente",
+        "description": "",
+        "requestParams": {
+          "required": "true",
+          "content": "CodCliente"
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application.json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "CodCliente": {
+                    "type": "number"
+                  },
+                  "CodAtivo": {
+                    "type": "number"
+                  },
+                  "QtdeAtivo": {
+                    "type": "number"
+                  }
+                },
+                "example": {
+                  "Senha":  "123456"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application.json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    },
+                    "Venda": {
+                      "type": "object",
+                      "content": {
+                        "CodCliente": "number",
+                        "CodAtivo": "number",
+                        "QtdeAtivo": "number"
+                      }
+                    }
+                  },
+                  "example": {
+                    "message": "Compra realizada com sucesso!",
+                    "Compra": {
+                        "CodCliente": 1,
+                        "CodAtivo": 1,
+                        "QtdeAtivo": 50
+                    }
+                }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request por Senha ou CodCliente",
+            "content": {
+              "application.json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": "string"
+                  },
+                  "example": {
+                    "message": "Código do cliente não encontrado e ou senha incorreta"
+                }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/investimentos": {
+      "get": {
+        "tags": [
+          "investimentos"
+        ],
+        "summary": "Histórico de compras de ativos",
+        "description": "",
+        "requestBody": {
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application.json": {
+                "schema": {
+                  "type": "array",
+                  "properties": {
+                    "id": {
+                      "type": "number"
+                    },
+                    "CodCliente": {
+                      "type": "number"
+                    },
+                    "CodAtivo": {
+                      "type": "number"
+                    },
+                    "QtdeAtivo": {
+                      "type": "number"
+                    }
+                  },
+                  "example": [
+                    {
+                        "id": 1,
+                        "CodCliente": 1,
+                        "CodAtivo": 1,
+                        "QtdeAtivo": 56
+                    },
+                    {
+                        "id": 2,
+                        "CodCliente": 1,
+                        "CodAtivo": 5,
+                        "QtdeAtivo": 90
+                    },
+                    {
+                        "id": 3,
+                        "CodCliente": 2,
+                        "CodAtivo": 6,
+                        "QtdeAtivo": 50
+                    }
+                ]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application.json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": "string"
+                  },
+                  "example": {
+                    "message": "Não há investimentos realizados"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

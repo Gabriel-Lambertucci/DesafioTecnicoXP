@@ -9,16 +9,31 @@ import investimentosMiddleware from '../middlewares/investimentosMiddleware';
 
 const routes = Router();
 
+// Rotas de clientes:
+
+routes.post('/cliente', clientesMiddleware.postClienteMiddleware, clientesController.postCliente);
+routes.get('/clientes', clientesController.getClientes);
+
+// Rotas de login:
+
+routes.post('/login', clientesMiddleware.postClienteMiddleware, loginController.login);
+
+// Rotas de investimentos:
+
+routes.get('/investimentos', investimentosController.getInvestimentos);
 routes.post('/investimentos/comprar', investimentosMiddleware.postComprarMiddleware, investimentosController.postComprar);
 routes.post('/investimentos/vender', investimentosMiddleware.postVenderMiddleware, investimentosController.postVender);
-routes.post('/user', clientesMiddleware.criarClienteMiddleware, clientesController.criarCliente);
-routes.post('/login', clientesMiddleware.criarClienteMiddleware, loginController.login);
+
+// Rotas de ativos:
+
 routes.get('/ativos', ativosController.getAtivos);
 routes.get('/ativos/:CodAtivo', ativosController.getByAtivo);
 routes.get('/ativos/cliente/:CodCliente', ativosController.getByClient);
+
+// Rotas de conta:
+
 routes.post('/conta/saque', contaController.postSaque);
 routes.post('/conta/deposito', contaController.postDeposito);
 routes.get('/conta/:CodCliente', contaController.getContaByClient);
-routes.get('/clientes', clientesController.getClientes);
 
 export default routes;

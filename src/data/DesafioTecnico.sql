@@ -43,24 +43,3 @@ VALUES
   ('Petrobras', 20.30, 100),
   ('Santander', 31.40, 10),
   ('XP', 409.15, 20);
-
-#INSERT INTO
-#  DesafioTecnico.Clientes (username)
-#VALUES
-#  ("Ricardo Machado"),
-#  ("Gabriel Felix"),
-#  ("Rodrigo Castro");
-
-#INSERT INTO
-# DesafioTecnico.InvestimentosComprar (CodCliente, CodAtivo, QtdeAtivo)
-#VALUES
-# (1, 1, 10),
-#  (2, 3, 20),
-#  (3, 2, 3);
-
-#INSERT INTO
-# DesafioTecnico.InvestimentosVender (CodCliente, CodAtivo, QtdeAtivo)
-#VALUES
-#  (1, 1, 5),
-#  (2, 3, 4),
-#  (3, 2, 1);

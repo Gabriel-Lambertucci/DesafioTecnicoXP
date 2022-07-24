@@ -2,12 +2,12 @@ import { ICliente } from '../interfaces';
 import clientesModel from '../models/clientesModel';
 import contaModel from '../models/contaModel';
 
-const criarCliente = async (body: ICliente) => {
+const postCliente = async (body: ICliente) => {
   const clientes = await clientesModel.getClientes();
   const existeCliente = clientes.some((item) => item.UserName === body.Nome);
   if (existeCliente) return false;
 
-  const { insertId } = await clientesModel.criarCliente(body);
+  const { insertId } = await clientesModel.postCliente(body);
   await contaModel.postConta(insertId);
   return insertId;
 };
@@ -17,4 +17,4 @@ const getClientes = async () => {
   return clientes;
 };
 
-export default { criarCliente, getClientes };
+export default { postCliente, getClientes };

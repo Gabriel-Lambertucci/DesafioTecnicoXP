@@ -2,6 +2,8 @@ import { IComprar, IVender } from '../interfaces';
 import investimentosModel from '../models/investimentosModel';
 import ativosModel from '../models/ativosModel';
 import clientesModel from '../models/clientesModel';
+import contaModel from '../models/contaModel';
+import contaService from './contaService';
 
 // Função auxiliar para verificar se o cliente ja existe ou não
 const verificaCliente = async (CodCliente: number) => {
@@ -21,6 +23,13 @@ const postComprar = async (body: IComprar): Promise<boolean | number | string> =
   const ativos = await ativosModel.getAtivos();
   const ativo = ativos.filter((item) => item.CodAtivo === CodAtivo).find((item) => item);
   if (!ativo) return false;
+
+  const valorUnitario: number = ativo && ativo.ValorUnitario;
+
+  // Verificação de saldo do cliente
+  const saldo = await contaModel.getSaldoByClient(CodCliente);
+  if (saldo[0].Valor < QtdeAtivo * valorUnitario) return 'Saldo insuficiente para compra';
+
   const QtdeCorretora = ativo && ativo.QtdeCorretora;
 
   // Quantidade de ativo a ser comprada não pode ser maior que a quantidade disponível na corretora
@@ -29,6 +38,8 @@ const postComprar = async (body: IComprar): Promise<boolean | number | string> =
   const QtdeAtual = QtdeCorretora - QtdeAtivo; // Atualizando quantidade do ativo na Corretora
   await ativosModel.updateAtivo(CodAtivo, QtdeAtual);
 
+  // Atualizar a quantidade de saldo da carteira
+  await contaService.postSaque(CodCliente, QtdeAtivo * valorUnitario);
   const { insertId } = await investimentosModel.postComprar(body);
   return insertId;
 };
@@ -42,17 +53,33 @@ const postVender = async (body: IVender): Promise<boolean | number | string> => 
 
   const investimentos = await investimentosModel.getInvestimentos();
 
-  const investimento = investimentos.filter((item) => item.CodAtivo === CodAtivo).find((item) => item); /* eslint-disable-line*/
+  const investimento = investimentos.find((item) => item.CodAtivo === CodAtivo && item.CodCliente === CodCliente && item); /* eslint-disable-line*/
 
   if (!investimento) return false;
-  const QtdeCarteira = investimento && investimento.QtdeAtivo;
 
-  // Quantidade de ativo a ser comprada não pode ser maior que a quantidade disponível na corretora
+  const QtdeCarteira = investimento.QtdeAtivo;
+
+  // Quantidade de ativo a ser vendida não pode ser maior que a quantidade disponível na carteira
   if (QtdeAtivo > QtdeCarteira) return 'Quantidade a ser vendida indisponível na carteira';
 
-  const QtdeAtual = QtdeCarteira - QtdeAtivo; // Atualizando quantidade do ativo na Carteira
+  // Atualizando quantidade do ativo na Carteira
+  const QtdeAtual = QtdeCarteira - QtdeAtivo;
   const response = await investimentosModel.postVender(CodCliente, CodAtivo, QtdeAtual);
+
+  // Atualizando quantidade de saldo da carteira
+  const ativos = await ativosModel.getAtivos();
+  const ativo = ativos.filter((item) => item.CodAtivo === CodAtivo).find((item) => item);
+  if (!ativo) return false;
+
+  const valorUnitario: number = ativo && ativo.ValorUnitario;
+  await contaService.postDeposito(CodCliente, QtdeAtivo * valorUnitario);
+
   return response && true;
 };
 
-export default { postComprar, postVender };
+const getInvestimentos = async () => {
+  const investimentos = await investimentosModel.getInvestimentos();
+  return investimentos;
+};
+
+export default { postComprar, postVender, getInvestimentos };

@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from 'express';
 import { validaCliente } from '../helpers/utils';
 
-const criarClienteMiddleware = async (req: Request, res: Response, next: NextFunction) => {
+const postClienteMiddleware = async (req: Request, res: Response, next: NextFunction) => {
   const isValid = await validaCliente(req.body);
   const message = isValid.error?.message;
   if (message) {
@@ -10,4 +10,4 @@ const criarClienteMiddleware = async (req: Request, res: Response, next: NextFun
   return next();
 };
 
-export default { criarClienteMiddleware };
+export default { postClienteMiddleware };

@@ -17,6 +17,7 @@ const postConta = async (CodCliente: number) => {
 };
 
 const updateConta = async (CodCliente: number, Saldo: number) => {
+  console.log('update conta');
   await connection.execute(
     'UPDATE Conta SET Saldo = ? WHERE CodCliente = ?',
     [Saldo, CodCliente],

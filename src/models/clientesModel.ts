@@ -8,7 +8,7 @@ const getClientes = async (): Promise<RowDataPacket[]> => {
   return result as RowDataPacket[];
 };
 
-const criarCliente = async (body: ICliente) => {
+const postCliente = async (body: ICliente) => {
   const salt = bcrypt.genSaltSync(5);
   const hash = bcrypt.hashSync(body.Senha, salt);
   const [result] = await connection.execute<ResultSetHeader>(
@@ -18,4 +18,4 @@ const criarCliente = async (body: ICliente) => {
   return result;
 };
 
-export default { criarCliente, getClientes };
+export default { postCliente, getClientes };

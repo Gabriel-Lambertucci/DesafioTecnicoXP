@@ -13,4 +13,9 @@ const postVender = async (req: Request, res: Response) => {
   return res.status(200).json({ message: 'Venda realizada com sucesso!', Venda: req.body });
 };
 
-export default { postComprar, postVender };
+const getInvestimentos = async (__req: Request, res: Response) => {
+  const investimentos = await investimentosService.getInvestimentos();
+  return res.status(200).json(investimentos);
+};
+
+export default { postComprar, postVender, getInvestimentos };

@@ -15,7 +15,7 @@ const getByAtivo = async (req: Request, res: Response) => {
 
 const getByClient = async (req: Request, res: Response) => {
   const response = await ativosService.getByClient(parseInt(req.params.CodCliente, 10));
-  if (!response) return res.status(404).json({ message: 'Usuário já Cadastrado' });
+  if (!response || response.length === 0) return res.status(404).json({ message: 'Usuário não possui ativos no momento' });
   return res.status(200).json(response);
 };
 
