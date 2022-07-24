@@ -29,7 +29,7 @@
 </details>
 
 <details>
-   <summary><strong> Rodando Testes! </strong></summary><br />
+   <summary><strong> Rodando Testes </strong></summary><br />
 
   > Para inicar os testes da aplicação é muito simples. Rode o comando npm test em seu terminal e a mágica acontece.
   - São 4 testes que testam de forma bem completa a aplicação, mas claro que quanto mais melhor e isso está no meu planejamento para o futuro!
@@ -37,7 +37,7 @@
 </details>
 
 <details>
-   <summary><strong> EndPoints! </strong></summary><br />
+   <summary><strong> EndPoints </strong></summary><br />
 
   > A Api está documentada através do SwaggerUI. Peço então que acessem o documento, através do endpoint http://localhost:3000/docs (Local) ou http://localhost:3001/docs (Docker), para que vejam todas as possibilidades que a Api oferece!
    <br/>
