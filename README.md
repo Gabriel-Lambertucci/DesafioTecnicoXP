@@ -12,7 +12,7 @@
 <details>
   <summary><strong>Deploy na Heroku!</strong></summary><br />
   
-  <p> O deploy da aplicação foi feito na plataforma Heroku, onde tive experiência e subir aplicações na Trybe.</p>
+  <p> O deploy da aplicação foi feito na plataforma Heroku, onde tive experiência de subir aplicações na Trybe.</p>
   <p> Dessa forma a Api está pronta para receber requisições através do link https://api-desafioxp.herokuapp.com/ seguido de todos endpoints que o projeto possui.</p:>
   <p> Está configurado o endpoint https://api-desafioxp.herokuapp.com/docs para a documentação da Api feita através do Swagger.</p>
 </details> 
@@ -48,7 +48,7 @@
 <details>
    <summary><strong> Rodando Testes </strong></summary><br />
 
-  <p> Para inicar os testes da aplicação é muito simples. Rode o comando npm test em seu terminal e a mágica acontece.</p>
+  <p> Para inicar os testes da aplicação é muito simples. Execute a aplicação com npm run start:test e rode o comando npm test em seu terminal.</p>
    <p> São 4 testes que testam de forma bem completa a aplicação, mas claro que quanto mais melhor e isso está no meu planejamento para o futuro!</p>
    <br/>
 </details>
@@ -59,4 +59,15 @@
   <p> A Api está documentada através do SwaggerUI. </p>
   <p> Peço então que acessem o documento, através do endpoint https://api-desafioxp.herokuapp.com/docs, ou se estiver rodando localmente a aplicação através de http://localhost:3000/docs (Local) ou http://localhost:3001/docs (Docker), para que vejam todas as possibilidades que a Api oferece!</p>
    <br/>
+</details>
+
+<details>
+  <summary><strong>Funcionamento da Api</strong></summary><br />
+  
+  <p> Um usuário não consegue fazer login se antes não tiver se cadastrado </p>
+  <p> Ao logar, um token é gerado. esse token é necessário para se realizar transações de compra e venda de ativos </p>
+  <p> Para que se consiga comprar um ativo, é necessário que o cliente tenha saldo em sua conta. Ele pode realizar depósitos e saques. Para que se consiga vender uma ação, é necessário que o ativo tenha sido anteriormente comprado pelo usuário.</p>
+  <p> Não é possivel que se compre mais ativos do que a corretora possui no momento, e um usuário não consegue vender mais do que possui de um ativo na carteira</p>
+  <p> Saldos em contas dos clientes, quantidade de ativos nas carteiras e também na corretora são atualizados em tempo real, a medida em que as requisições vão sendo realizadas</p>
+  <p> Uma lista completa de todos os ativos disponíveis para venda na corretora está disponível no endpoint /ativos. Assim, pode-se saber os códigos, valores e quantidade de cada um deles, antes de requisitar uma compra. </p>
 </details>
