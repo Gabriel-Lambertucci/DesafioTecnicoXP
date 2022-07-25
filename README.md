@@ -48,7 +48,7 @@
 <details>
    <summary><strong> Rodando Testes </strong></summary><br />
 
-  <p> Para inicar os testes da aplicação é muito simples. Rode o comando npm test em seu terminal e a mágica acontece.</p>
+  <p> Para inicar os testes da aplicação é muito simples. Execute a aplicação com npm run start:test e rode o comando npm test em seu terminal.</p>
    <p> São 4 testes que testam de forma bem completa a aplicação, mas claro que quanto mais melhor e isso está no meu planejamento para o futuro!</p>
    <br/>
 </details>
