@@ -3,11 +3,11 @@
 <details>
   <summary><strong>👨‍💻 Como foi desenvolvido</strong></summary><br />
   
-  > A linguagem utilizada no projeto foi TypeScript.
+  <p> A linguagem utilizada no projeto foi TypeScript.
     - Resolvi utilizá-la porque sua tipagem confere mais organização e confiança em um código, principalmente de back-end. Além de ter características mais próximas ao c#, como POO, do que o JavaScript.
     - Para tornar mais real as simulações feitas através da aplicação, estou utilizando um banco myql remoto, para guardar e buscar informações de forma dinâmica.
   - Api produzida com camadas de controller, service, model e middlewares.
-
+  </p>
 </details>
 
 <details>
