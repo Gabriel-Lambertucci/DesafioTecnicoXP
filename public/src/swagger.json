@@ -135,7 +135,7 @@
                 "tags": [
                     "login"
                 ],
-                "description": "Para fazer login no sistema, é preciso que primeiro o cliente esteja cadastrado. Será enviado um token jwt após o cadastro que é necessário para login e para realizar transações. Informo que a senha é criptografada antes de entrar no banco de dados com bcrypt, protegendo sua informações.",
+                "description": "Para fazer login no sistema, é preciso que primeiro o cliente esteja cadastrado. Será enviado um token jwt após o cadastro que é necessário para login e para realizar transações. Informo que a senha é criptografada antes de entrar no banco de dados com bcrypt, protegendo sua informações. O token deve ser enviado nos parâmetros de requisição em: headers.authorizantion",
                 "requestBody": {
                     "required": true,
                     "content": {
@@ -256,7 +256,7 @@
                 }
             }
         },
-        "/ativos/:CodAtivo": {
+        "/ativos/{CodAtivo}": {
             "get": {
                 "tags": [
                     "ativos"
@@ -311,7 +311,7 @@
                 }
             }
         },
-        "/ativos/clientes/:CodCliente": {
+        "/ativos/clientes/{CodCliente}": {
             "get": {
                 "tags": [
                     "ativos"
@@ -383,8 +383,8 @@
                 "tags": [
                     "conta"
                 ],
-                "summary": "Saque",
-                "description": "Realizar um novo saque",
+                "summary": "",
+                "description": "Para se realizar um novo Saque, é necessário que o cliente forneça novamente a senha Cadastrada no sistema, conferindo maior confiabilidade.",
                 "requestBody": {
                     "required": true,
                     "content": {
@@ -468,7 +468,7 @@
                     "conta"
                 ],
                 "summary": "Deposito",
-                "description": "Realizar um novo Deposito",
+                "description": "Para se realizar um novo Depósito, é necessário que o cliente forneça novamente a senha Cadastrada no sistema, conferindo maior confiabilidade.",
                 "requestBody": {
                     "required": true,
                     "content": {
@@ -546,16 +546,21 @@
                 }
             }
         },
-        "/conta/:CodCliente": {
+        "/conta/{CodCliente}": {
             "post": {
                 "tags": [
                     "conta"
                 ],
                 "summary": "Informação da conta de um cliente",
-                "description": "",
-                "requestParams": {
-                    "required": "true",
-                    "content": "CodCliente"
+                "description": "Para se obter informações sensíveis como saldo, é necessário que o cliente forneça novamente a senha Cadastrada no sistema, conferindo maior confiabilidade.",
+                "parameters": {
+                    "in": "path",
+                    "name": "CodCliente",
+                    "schema": {
+                        "type": "integer"
+                    },
+                    "required": true,
+                    "description": "CodCliente que deseja realizar uma compra"
                 },
                 "requestBody": {
                     "required": true,
@@ -627,11 +632,7 @@
                     "investimentos"
                 ],
                 "summary": "Requisição de venda de uma ação pelo cliente",
-                "description": "Requisição de venda de uma ação pelo cliente",
-                "requestParams": {
-                    "required": "true",
-                    "content": "CodCliente"
-                },
+                "description": "Requisição de venda de uma ação pelo cliente. O token precisa ser enviado em headers.authorization na requisição",
                 "requestBody": {
                     "required": true,
                     "content": {
@@ -650,7 +651,9 @@
                                     }
                                 },
                                 "example": {
-                                    "Senha": "123456"
+                                    "CodCLiente": "1",
+                                    "CodAtivo": "1",
+                                    "QtdeAtivo": "10"
                                 }
                             }
                         }
@@ -713,11 +716,7 @@
                     "investimentos"
                 ],
                 "summary": "Requisição de compra de uma ação pelo cliente",
-                "description": "",
-                "requestParams": {
-                    "required": "true",
-                    "content": "CodCliente"
-                },
+                "description": "Requisição de venda de uma ação pelo cliente. O token precisa ser enviado em headers.authorization na requisição",
                 "requestBody": {
                     "required": true,
                     "content": {
@@ -736,7 +735,9 @@
                                     }
                                 },
                                 "example": {
-                                    "Senha": "123456"
+                                    "CodCLiente": "1",
+                                    "CodAtivo": "1",
+                                    "QtdeAtivo": "10"
                                 }
                             }
                         }
