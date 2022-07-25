@@ -4,18 +4,18 @@
   <summary><strong>👨‍💻 Como foi desenvolvido</strong></summary><br />
   
   <p> A linguagem utilizada no projeto foi TypeScript. </br>
-    - Resolvi utilizá-la porque sua tipagem confere mais organização e confiança em um código, principalmente de back-end. Além de ter características mais próximas ao c#, como POO, do que o JavaScript.
-    - Para tornar mais real as simulações feitas através da aplicação, estou utilizando um banco myql remoto, para guardar e buscar informações de forma dinâmica.
-  - Api produzida com camadas de controller, service, model e middlewares.
+    - Resolvi utilizá-la porque sua tipagem confere mais organização e confiança em um código, principalmente de back-end. Além de ter características mais próximas ao c#, como POO, do que o JavaScript. </br>
+    - Para tornar mais real as simulações feitas através da aplicação, estou utilizando um banco myql remoto, para guardar e buscar informações de forma dinâmica. </br>
+  - Api produzida com camadas de controller, service, model e middlewares.</br>
   </p>
 </details>
 
 <details>
   <summary><strong>👨‍💻 Deploy na Heroku!</strong></summary><br />
   
-  > O deploy da aplicação foi feito na plataforma Heroku, onde tive experiência e subir aplicações na Trybe.
-  > Dessa forma a Api está pronta para receber requisições através do link https://api-desafioxp.herokuapp.com/ seguido de todos endpoints que o projeto possui.
-  > Está configurado o endpoint https://api-desafioxp.herokuapp.com/docs para a documentação da Api feita através do Swagger.
+  <p> O deploy da aplicação foi feito na plataforma Heroku, onde tive experiência e subir aplicações na Trybe.</p>
+  <p> Dessa forma a Api está pronta para receber requisições através do link https://api-desafioxp.herokuapp.com/ seguido de todos endpoints que o projeto possui.</p:>
+  <p> Está configurado o endpoint https://api-desafioxp.herokuapp.com/docs para a documentação da Api feita através do Swagger.</p>
 </details> 
 
 <details>
